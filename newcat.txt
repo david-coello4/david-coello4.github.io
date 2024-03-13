@@ -8,16 +8,13 @@
 <h1>Meow Meow</h1>
 <p>choose your kitty</p>
 
-<a href="cursecat.html">click here for next page if you dare</
-a></p>
-
 <a href="index.html">
 <img src="images/cat3.jpg" alt="meow" width="500">
 <a>
 
 <a> <img src="images/cat4.jpg" alt="bufcat" width="500"></a>
 
-<p>click on black cat image to go back</p>
+<p>click on the image to go back</p>
 
 </body>
 </html>
