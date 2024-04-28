@@ -3,14 +3,14 @@ var bally = 300;
 var ballSize = 100;
 var score = 0;
 var gameState = "L1";
-var crab;
+var crab, sponge, seastar, squid, home;
 
 function preload() {
-  crab = loadImage('https://david-coello4.github.io/ball/images/crab.png')
-  sponge = loadImage('https://david-coello4.github.io/ball/images/sponge.png')
-  seastar = loadImage('https://david-coello4.github.io/ball/images/seastar.png')
-  squid = loadImage('https://david-coello4.github.io/ball/images/ward.png')
-  home =  loadImage('https://david-coello4.github.io/ball/images/background2.png')
+  crab = loadImage('https://david-coello4.github.io/ball/crab.png')
+  sponge = loadImage('https://david-coello4.github.io/ball/sponge.png')
+  seastar = loadImage('https://david-coello4.github.io/ball/seastar.png')
+  squid = loadImage('https://david-coello4.github.io/ball/ward.png')
+  home =  loadImage('https://david-coello4.github.io/ball/background2.png')
 }
 function setup() {
 createCanvas(600, 600);
@@ -123,7 +123,6 @@ function youWin(){
   text("You Win", width/2, height-20);
   textSize(20);
   fill(108, 135, 220);
-  stroke(76, 96, 156);
   
   
 }// end of level 5 =====================================
