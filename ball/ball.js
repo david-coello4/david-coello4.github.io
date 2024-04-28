@@ -1,9 +1,17 @@
 var ballx = 300;
 var bally = 300;
-var ballSize = 40;
+var ballSize = 100;
 var score = 0;
 var gameState = "L1";
+var crab;
 
+function preload() {
+  crab = loadImage('https://david-coello4.github.io/ball/images/crab.png')
+  sponge = loadImage('https://david-coello4.github.io/ball/images/sponge.png')
+  seastar = loadImage('https://david-coello4.github.io/ball/images/seastar.png')
+  squid = loadImage('https://david-coello4.github.io/ball/images/ward.png')
+  home =  loadImage('https://david-coello4.github.io/ball/images/background2.png')
+}
 function setup() {
 createCanvas(600, 600);
 textAlign(CENTER);
@@ -14,7 +22,7 @@ textSize(20);
 
 function draw() {
 
-background(220);
+background(home);
 if(gameState == "L1"){
 levelOne();
 }
@@ -24,11 +32,17 @@ if(gameState == "L2"){
 if(gameState == "L3"){
   levelThree();
 }
+if(gameState == "L4"){
+  levelFour();
+ 
+}
 if(gameState == "win"){
   youWin();
 }
   
   text(("Score: " +score), width/2, 40);
+  fill(108, 135, 220)
+  strokeWeight(76, 96, 156)
 }// end draw
 
 function levelOne(){
@@ -42,14 +56,15 @@ function levelOne(){
   }
   if(score>= 5){
     gameState = "L2";
+    ballSize=80;
   }
-  ellipse(ballx,bally, ballSize, ballSize);
-  line(ballx, bally, mouseX, mouseY);
+  image(crab, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize)
+  //line(ballx, bally, mouseX, mouseY);
   
-}// end of level 2 =====================================
+}// end of level 1 =====================================
 
 function levelTwo(){
-  background(200,100,0);
+  background(home);
   text("Level 2", width/2, height-20);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
   if(distToBall <ballSize/2){
@@ -60,37 +75,55 @@ function levelTwo(){
   }
   if(score>= 10){
     gameState = "L3";
+    ballSize=60
   }
-  ellipse(ballx,bally, ballSize, ballSize);
+  image(sponge, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize)
   //line(ballx, bally, mouseX, mouseY);
   
-}// end of level 3 =====================================
+}// end of level 2 =====================================
 function levelThree(){
-    background(0,100,200);
+  background(home);
   text("Level 3", width/2, height-20);
   var distToBall = dist(ballx, bally, mouseX, mouseY);
   if(distToBall <ballSize/2){
     ballx=random(width);
     bally=random(height);
     score=score+1;
-    ballSize = ballSize -5;
     
   }
-  if(score> 15){
-    // level 4
-    gameState = "win";
-  }// score over 15 win
-  
- 
-  ellipse(ballx,bally, ballSize, ballSize);
+  if(score>= 15){
+    gameState = "L4";
+    ballSize=40
+  }
+  image(seastar, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize)
   //line(ballx, bally, mouseX, mouseY);
   
 }// end of level 3 =====================================
+function levelFour(){
+  background(home);
+  text("Level 4", width/2, height-20);
+  var distToBall = dist(ballx, bally, mouseX, mouseY);
+  if(distToBall <ballSize/2){
+    ballx=random(width);
+    bally=random(height);
+    score=score+1;
+    
+  }
+  if(score>= 20){
+    gameState = "win";
+    ballSize=20
+  }
+  image(squid, ballx-ballSize/2, bally-ballSize/2, ballSize, ballSize)
+  //line(ballx, bally, mouseX, mouseY);
+
+}// end of level 4 =====================================
 function youWin(){
-    background(200,100,2000);
+    background(home);
   textSize(100);
   text("You Win", width/2, height-20);
   textSize(20);
+  fill(108, 135, 220);
+  stroke(76, 96, 156);
   
   
-}// end of level 3 =====================================
+}// end of level 5 =====================================
