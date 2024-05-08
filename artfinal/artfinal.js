@@ -39,8 +39,8 @@ function setup() {
   button.position(200, 300); // Adjusted position
   button.mousePressed(opensponge);
 
-  button = createButton("change background color"); // Corrected placement
-  button.position(250, 250); // Adjusted position
+  button = createButton("change background"); // Corrected placement
+  button.position(150, 730); // Adjusted position
   button.mousePressed(changeColor);
 }
 
