@@ -4,14 +4,21 @@ const points = [];
 let dragPoint = null;
 const numPoints = 5;
 const dragRadius = 20;
-var crab;
+let crab;
+let sponge;
+let home;
+var bgcolor;
+
 
 function preload() {
-  crab = loadImage('https://david-coello4.github.io/ball/crab.png')
-
+  crab = loadImage('https://david-coello4.github.io/ball/crab.png');
+  sponge = loadImage('https://david-coello4.github.io/ball/sponge.png');
+  home = loadImage('https://david-coello4.github.io/artfinal/background_test.png'); // Replace placeholder with actual background
 }
+
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(1475, 800);
+  bgcolor = color(200);
   textAlign(CENTER);
   strokeWeight(5);
   textSize(30);
@@ -25,34 +32,23 @@ function setup() {
   }
 
   button = createButton('test');
-  button.position(10, 10);
-  button.mousePressed(openEmail);
+  button.position(210, 160);
+  button.mousePressed(opencrab);
+
+  button = createButton('test2'); // Corrected placement
+  button.position(200, 300); // Adjusted position
+  button.mousePressed(opensponge);
+
+  button = createButton("change background color"); // Corrected placement
+  button.position(250, 250); // Adjusted position
+  button.mousePressed(changeColor);
 }
+
 
 function draw() {
-  background(220);
-
-  // Draw bubbles
-  for (let bubble of bubbles) {
-    bubble.display();
-  }
-
-  image(crab); //This is where you fill the bubble's color
-  for (let p of points) {
-    circle(p.x, p.y, dragRadius * 2);
-  }
-}
-
-function mousePressed() {
-  for (let i = points.length - 1; i >= 0; i--) {
-    const isPressed = mouseInCircle(points[i], dragRadius);
-
-    if (isPressed) {
-      dragPoint = points.splice(i, 1)[0];
-      points.push(dragPoint);
-      break;
-    }
-  }
+  background(bgcolor);
+  background(home);
+  
 }
 
 function mouseDragged() {
@@ -70,19 +66,25 @@ function mouseInCircle(pos, radius) {
   return dist(mouseX, mouseY, pos.x, pos.y) < radius;
 }
 
-function openEmail() {
+function opencrab() {
   window.open("https://david-coello4.github.io/ball/crab.png");
+}
+
+function opensponge() {
+  window.open("https://david-coello4.github.io/ball/sponge.png");
+}
+  
+function changeColor() {
+  bgcolor = color(random(150, 255), random(150, 255), random(150, 255));
+  
 }
 
 // Define Bubble class
 function Bubble() {
   this.display = function() {
-    //stroke(255);
-    image(crab);
-    //ellipse(random(0, width), random(0, height), 60, 60);
+    //image(crab, random(0, width), random(0, height)); // Display crab image at random positions
   };
 }
-
 
 
   
