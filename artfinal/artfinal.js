@@ -1,54 +1,68 @@
-let bubbles = [];
-let button;
+let ballx = 300;
+let bally = 300;
+let ballSize = 40;
 const points = [];
-let dragPoint = null;
 const numPoints = 5;
-const dragRadius = 20;
-let crab;
-let sponge;
+let switcher;
+let button;
+let disk;
 let home;
-var bgcolor;
-
+let home2;
+let currentImage;
+let border; //temporary
+let dragPoint = null; // Define dragPoint
 
 function preload() {
-  crab = loadImage('https://david-coello4.github.io/ball/crab.png');
-  sponge = loadImage('https://david-coello4.github.io/ball/sponge.png');
-  home = loadImage('https://david-coello4.github.io/artfinal/background_test.png'); // Replace placeholder with actual background
+  paper = loadImage('https://david-coello4.github.io/artfinal/paper.png');
+  disk = loadImage('https://david-coello4.github.io/artfinal/disk.gif');
+  home = loadImage('https://david-coello4.github.io/artfinal/tvscreen1.png');
+  home2 = loadImage('https://david-coello4.github.io/artfinal/tvscreen2.png');
+  currentImage = loadImage('https://david-coello4.github.io/artfinal/tvscreen1.png');
+  border = loadImage('https://david-coello4.github.io/artfinal/tvborder.png');
 }
 
 function setup() {
-  createCanvas(1475, 800);
-  bgcolor = color(200);
+  createCanvas(1512, 807);
   textAlign(CENTER);
-  strokeWeight(5);
-  textSize(30);
-
-  for (let i = 0; i < 6; i++) {
-    bubbles[i] = new Bubble();
-  }
+  switcher = createButton('Change Image');
+  switcher.position(225, 725);
+  switcher.mousePressed(changeImg);
 
   for (let i = 0; i < numPoints; i++) {
     points.push(createVector(random(width), random(height)));
   }
 
-  button = createButton('test');
-  button.position(210, 160);
-  button.mousePressed(opencrab);
+  //==========Screen Image======================================
 
-  button = createButton('test2'); // Corrected placement
-  button.position(200, 300); // Adjusted position
-  button.mousePressed(opensponge);
-
-  button = createButton("change background"); // Corrected placement
-  button.position(150, 730); // Adjusted position
-  button.mousePressed(changeColor);
+  disk.resize(10,10); // Resize the disk image before creating the image element
+  button = createImg('https://david-coello4.github.io/artfinal/disk.gif');
+  button.position(200, 200);
+  button.mousePressed(opendisk);
+  button.size(50, 50); // Resize the button
+  
+  button.style('font-size', '20px'); // Adjust font size
+  button.style('padding', '10px');   // Adjust padding
+  button.style('width', '100px');    // Adjust width
+  button.style('height', '100px');   // Adjust height
+  
+  //==========End of Disk Button================================
+  
+  paper.resize(10,10); // Resize the disk image before creating the image element
+  button = createImg('https://david-coello4.github.io/artfinal/paper.png');
+  button.position(300, 400);
+  button.mousePressed(openpaper);
+  button.size(50, 50); // Resize the button
+  
+  button.style('font-size', '20px'); // Adjust font size
+  button.style('padding', '10px');   // Adjust padding
+  button.style('width', '100px');    // Adjust width
+  button.style('height', '100px');   // Adjust height
 }
 
+//==========End of Paper Button================================
 
 function draw() {
-  background(bgcolor);
-  background(home);
-  
+  background(border); // Display background image
 }
 
 function mouseDragged() {
@@ -66,25 +80,22 @@ function mouseInCircle(pos, radius) {
   return dist(mouseX, mouseY, pos.x, pos.y) < radius;
 }
 
-function opencrab() {
-  window.open("https://david-coello4.github.io/ball/crab.png");
+function openpaper() {
+  window.open("https://david-coello4.github.io/artfinal/paper.png");
 }
 
-function opensponge() {
-  window.open("https://david-coello4.github.io/ball/sponge.png");
-}
-  
-function changeColor() {
-  bgcolor = color(random(150, 255), random(150, 255), random(150, 255));
-  
+function opendisk() {
+  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 }
 
-// Define Bubble class
-function Bubble() {
-  this.display = function() {
-    //image(crab, random(0, width), random(0, height)); // Display crab image at random positions
-  };
+function changeImg() {
+  if (currentImage === home) {
+    currentImage = home2;
+  } else {
+    currentImage = home;
+  }
+  background(255);
+  image(currentImage, 0, 0, width, height);
 }
-
 
   
