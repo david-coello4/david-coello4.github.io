@@ -124,7 +124,7 @@ function openpaper() {
 }
 
 function opendisk() {
-  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  window.open('https://david-coello4.github.io/videofinal/index.html');
 }
 
 function openfolder() {
