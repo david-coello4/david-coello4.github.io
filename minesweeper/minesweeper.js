@@ -8,6 +8,7 @@ const CELL_SIZE = 30; // Adjust cell size accordingly
 let grid;
 let gameOver;
 let resetButton;
+let blankButton; // New blank button
 
 function setup() {
   createCanvas(COLS * CELL_SIZE, ROWS * CELL_SIZE);
@@ -19,6 +20,16 @@ function setup() {
   resetButton.position(width + 10, 10);
   resetButton.mousePressed(resetGame);
   resetButton.size(100, 50); // Adjust button size here
+  
+  // Create blank button
+  blankButton = createImg("https://david-coello4.github.io/minesweeper/mineback.png"); // Using an image instead of text for the blank button
+  blankButton.position(width + 10, 70);
+  blankButton.size(100, 100); // Adjust button size here
+  blankButton.mousePressed(openBlank); // Call openBlank function when clicked
+}
+
+function openBlank() {
+  window.open('https://david-coello4.github.io/artfinal/index.html'); // Open the specified URL when clicked
 }
 
 function createGrid() {
