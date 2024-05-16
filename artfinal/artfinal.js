@@ -30,7 +30,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1510, 805);
+  createCanvas(windowWidth, windowHeight);
+   background(0);
   textAlign(CENTER);
   switcher = createImg('https://david-coello4.github.io/artfinal/button.png');
   switcher.position(183, 655);
@@ -127,7 +128,7 @@ function opendisk() {
 }
 
 function openfolder() {
-  window.open('https://david-coello4.github.io/index.html');
+  window.open('https://david-coello4.github.io/simulation.html');
 }
 
 function openmine() {
@@ -144,6 +145,9 @@ function changeImg() {
   } else {
     currentImage = home;
   }
-  background(255);
+  
+  // Change background color here
+  background(200, 100, 50); // Change the color values to your desired color
+  
   image(currentImage, 0, 0, width, height);
 }
