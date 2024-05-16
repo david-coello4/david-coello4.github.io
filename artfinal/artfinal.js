@@ -12,7 +12,6 @@ let home3;
 let home4;
 let folder;
 let currentImage;
-//let video; //video place holder code
 let border; //temporary
 let dragPoint = null; // Define dragPoint
 
@@ -20,6 +19,8 @@ function preload() {
   paper = loadImage('https://david-coello4.github.io/artfinal/paper.png');
   disk = loadImage('https://david-coello4.github.io/artfinal/disk.gif');
   folder = loadImage('https://david-coello4.github.io/artfinal/folder.png');
+  button = loadImage('https://david-coello4.github.io/artfinal/button.png');
+  mine = loadImage('https://david-coello4.github.io/artfinal/mine.png');
   home = loadImage('https://david-coello4.github.io/artfinal/tvscreen1.png');
   home2 = loadImage('https://david-coello4.github.io/artfinal/tvscreen2.png');
   home3 = loadImage('https://david-coello4.github.io/artfinal/tvscreen3.png');
@@ -29,13 +30,17 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1512, 807);
+  createCanvas(1510, 805);
   textAlign(CENTER);
-  switcher = createButton('Change Image');
-  switcher.position(225, 725);
+  switcher = createImg('https://david-coello4.github.io/artfinal/button.png');
+  switcher.position(183, 655);
   switcher.mousePressed(changeImg);
-  //video = createCapture(VIDEO, videoReady, videoError);//video place holder code
-  //video.size(100, 100); //video place holder code
+  switcher.size(100, 100); // Resize the button
+  
+  switcher.style('font-size', '20px'); // Adjust font size
+  switcher.style('padding', '10px'); // Adjust padding
+  switcher.style('width', '220px'); // Adjust width
+  switcher.style('height', '200px'); // Adjust height
 
   for (let i = 0; i < numPoints; i++) {
     points.push(createVector(random(width), random(height)));
@@ -44,44 +49,55 @@ function setup() {
   //==========Screen Image======================================
 
   disk.resize(10, 10); // Resize the disk image before creating the image element
-  button = createImg('https://david-coello4.github.io/artfinal/disk.gif');
-  button.position(200, 200);
-  button.mousePressed(opendisk);
-  button.size(50, 50); // Resize the button
+  let diskButton = createImg('https://david-coello4.github.io/artfinal/disk.gif');
+  diskButton.position(200, 200);
+  diskButton.mousePressed(opendisk);
+  diskButton.size(50, 50); // Resize the button
 
-  button.style('font-size', '20px'); // Adjust font size
-  button.style('padding', '10px'); // Adjust padding
-  button.style('width', '100px'); // Adjust width
-  button.style('height', '100px'); // Adjust height
+  diskButton.style('font-size', '20px'); // Adjust font size
+  diskButton.style('padding', '10px'); // Adjust padding
+  diskButton.style('width', '100px'); // Adjust width
+  diskButton.style('height', '100px'); // Adjust height
 
   //==========End of Disk Button================================
 
   paper.resize(10, 10); // Resize the disk image before creating the image element
-  button = createImg('https://david-coello4.github.io/artfinal/paper.png');
-  button.position(300, 400);
-  button.mousePressed(openpaper);
-  button.size(50, 50); // Resize the button
+  let paperButton = createImg('https://david-coello4.github.io/artfinal/paper.png');
+  paperButton.position(300, 400);
+  paperButton.mousePressed(openpaper);
+  paperButton.size(50, 50); // Resize the button
 
-  button.style('font-size', '20px'); // Adjust font size
-  button.style('padding', '10px'); // Adjust padding
-  button.style('width', '100px'); // Adjust width
-  button.style('height', '100px'); // Adjust height
+  paperButton.style('font-size', '20px'); // Adjust font size
+  paperButton.style('padding', '10px'); // Adjust padding
+  paperButton.style('width', '100px'); // Adjust width
+  paperButton.style('height', '100px'); // Adjust height
 
   //==========End of Paper Button================================
 
   folder.resize(10, 10); // Resize the disk image before creating the image element
-  button = createImg('https://david-coello4.github.io/artfinal/folder.png');
-  button.position(1100, 300);
-  button.mousePressed(openfolder);
-  button.size(50, 50); // Resize the button
+  let folderButton = createImg('https://david-coello4.github.io/artfinal/folder.png');
+  folderButton.position(1100, 300);
+  folderButton.mousePressed(openfolder);
+  folderButton.size(50, 50); // Resize the button
 
-  button.style('font-size', '20px'); // Adjust font size
-  button.style('padding', '10px'); // Adjust padding
-  button.style('width', '100px'); // Adjust width
-  button.style('height', '100px'); // Adjust height
+  folderButton.style('font-size', '20px'); // Adjust font size
+  folderButton.style('padding', '10px'); // Adjust padding
+  folderButton.style('width', '100px'); // Adjust width
+  folderButton.style('height', '100px'); // Adjust height
+
+  //==========End of Folder Button================================
+
+  mine.resize(10, 10); // Resize the disk image before creating the image element
+  let mineButton = createImg('https://david-coello4.github.io/artfinal/mine.png');
+  mineButton.position(1100, 500);
+  mineButton.mousePressed(openmine);
+  mineButton.size(50, 50); // Resize the button
+
+  mineButton.style('font-size', '20px'); // Adjust font size
+  mineButton.style('padding', '10px'); // Adjust padding
+  mineButton.style('width', '100px'); // Adjust width
+  mineButton.style('height', '100px'); // Adjust height
 }
-
-//==========End of Folder Button================================
 
 function draw() {
   background(border); // Display background image
@@ -112,6 +128,10 @@ function opendisk() {
 
 function openfolder() {
   window.open('https://david-coello4.github.io/index.html');
+}
+
+function openmine() {
+  window.open('https://david-coello4.github.io/minesweeper/index.html');
 }
 
 function changeImg() {
