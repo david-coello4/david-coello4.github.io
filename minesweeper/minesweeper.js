@@ -1,17 +1,24 @@
 // Constants
-const COLS = 10;
-const ROWS = 10;
-const TOTAL_MINES = 10;
-const CELL_SIZE = 40;
+const COLS = 20;
+const ROWS = 20;
+const TOTAL_MINES = 40; // Adjust total mines accordingly
+const CELL_SIZE = 30; // Adjust cell size accordingly
 
 // Game state
 let grid;
 let gameOver;
+let resetButton;
 
 function setup() {
   createCanvas(COLS * CELL_SIZE, ROWS * CELL_SIZE);
   createGrid();
   gameOver = false;
+  
+  // Create reset button
+  resetButton = createButton("Try Again");
+  resetButton.position(width + 10, 10);
+  resetButton.mousePressed(resetGame);
+  resetButton.size(100, 50); // Adjust button size here
 }
 
 function createGrid() {
@@ -86,6 +93,11 @@ function revealEmpty(x, y) {
       }
     }
   }
+}
+
+function resetGame() {
+  createGrid();
+  gameOver = false;
 }
 
 function mousePressed() {
