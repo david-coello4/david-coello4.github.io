@@ -120,7 +120,7 @@ function mouseInCircle(pos, radius) {
 }
 
 function openpaper() {
-  window.open("https://david-coello4.github.io/artfinal/paper.png");
+  window.open("https://david-coello4.github.io/3dcube/index.html");
 }
 
 function opendisk() {
