@@ -52,7 +52,7 @@
 
   <p>After processing the files, I first created a draft print, which is the image with a blank SpongeBob figure, to see how it printed in order to see if it worked out or it needs any changes. Once I felt confident about the structure of it, I finally printed out the entire build. Unfortunately, the SpongeBob that's part of the Patrick build broke off because of the weak supports, so I had to use the first drafted SpongeBob as a replacement. After that, I painted each with their appropriate colors and finished this project, as seen in the second colored image.</p> 
 
-<!-- Carousel -->
+  <!-- Carousel -->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
   <!-- Indicators/dots -->
@@ -77,7 +77,36 @@
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
+    
   </button>
+
+<style>
+  /* Change color of the left arrow */
+.carousel-control-prev-icon {
+  background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%230000FF" viewBox="0 0 8 8"%3E%3Cpath d="M5.5 0l-5 4 5 4V0z"/%3E%3C/svg%3E');
+}
+
+/* Change color of the right arrow */
+.carousel-control-next-icon {
+  background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%230000FF" viewBox="0 0 8 8"%3E%3Cpath d="M2.5 0l5 4-5 4V0z"/%3E%3C/svg%3E');
+}
+</style>
+
+  <style>
+    /* Resize the carousel and center it */
+#demo {
+  max-width: 600px; /* Adjust width as needed */
+  margin: auto; /* Centers the carousel */
+}
+
+/* Resize images inside the carousel */
+.carousel-inner img {
+  max-height: 675px; /* Adjust height as needed */
+  width: auto; /* Maintains aspect ratio */
+  object-fit: cover; /* Ensures images fit nicely */
+}
+
+  </style>
 </div>
 
 </div>
